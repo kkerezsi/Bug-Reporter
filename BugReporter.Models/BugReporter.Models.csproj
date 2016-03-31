@@ -1,0 +1,79 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{EFE73875-5F40-4126-BE08-08006D8B64BE}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>BugReporter.Models</RootNamespace>
+    <AssemblyName>BugReporter.Models</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Enums\BugReporterUserEvents.cs" />
+    <Compile Include="Enums\BugStatus.cs" />
+    <Compile Include="Enums\StatusCodes.cs" />
+    <Compile Include="Enums\UserType.cs" />
+    <Compile Include="Events\BugReporterEventArgs.cs" />
+    <Compile Include="Exceptions\ConnectionException.cs" />
+    <Compile Include="Models\Bug.cs" />
+    <Compile Include="Models\Project.cs" />
+    <Compile Include="Models\ReportModel.cs" />
+    <Compile Include="Models\User.cs" />
+    <Compile Include="Models\UserInfo.cs" />
+    <Compile Include="Networking\Request\LoginRequest.cs" />
+    <Compile Include="Networking\Request\LogoutRequest.cs" />
+    <Compile Include="Networking\Request\SaveReportRequest.cs" />
+    <Compile Include="Networking\Request\ReportsRequest.cs" />
+    <Compile Include="Networking\Request\Request.cs" />
+    <Compile Include="Networking\Response\ErrorResponse.cs" />
+    <Compile Include="Networking\Response\OkLoginResponse.cs" />
+    <Compile Include="Networking\Response\ReportsResponse.cs" />
+    <Compile Include="Networking\Response\Response.cs" />
+    <Compile Include="Networking\Response\SaveReportResponse.cs" />
+    <Compile Include="Networking\Response\UpdateResponse.cs" />
+    <Compile Include="Utils\ProjectConverter.cs" />
+    <Compile Include="Utils\UserConverter.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Windows.Forms" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,0 +1,15 @@
+C:\Users\Alex\documents\visual studio 2015\Projects\BugReporterSolution\BugReporter.Client\obj\Debug\BugReporter.Client.csprojResolveAssemblyReference.cache
+C:\Users\Alex\documents\visual studio 2015\Projects\BugReporterSolution\BugReporter.Client\obj\Debug\BugReporter.Client.TesterScreen.resources
+C:\Users\Alex\documents\visual studio 2015\Projects\BugReporterSolution\BugReporter.Client\obj\Debug\BugReporter.Client.DeveloperScreen.resources
+C:\Users\Alex\documents\visual studio 2015\Projects\BugReporterSolution\BugReporter.Client\obj\Debug\BugReporter.Client.Login.resources
+C:\Users\Alex\documents\visual studio 2015\Projects\BugReporterSolution\BugReporter.Client\obj\Debug\BugReporter.Client.Properties.Resources.resources
+C:\Users\Alex\documents\visual studio 2015\Projects\BugReporterSolution\BugReporter.Client\obj\Debug\BugReporter.Client.csproj.GenerateResource.Cache
+C:\Users\Alex\documents\visual studio 2015\Projects\BugReporterSolution\BugReporter.Client\bin\Debug\BugReporter.Client.exe.config
+C:\Users\Alex\documents\visual studio 2015\Projects\BugReporterSolution\BugReporter.Client\bin\Debug\BugReporter.Client.exe
+C:\Users\Alex\documents\visual studio 2015\Projects\BugReporterSolution\BugReporter.Client\bin\Debug\BugReporter.Client.pdb
+C:\Users\Alex\documents\visual studio 2015\Projects\BugReporterSolution\BugReporter.Client\bin\Debug\BugReporter.Bll.dll
+C:\Users\Alex\documents\visual studio 2015\Projects\BugReporterSolution\BugReporter.Client\bin\Debug\BugReporter.Models.dll
+C:\Users\Alex\documents\visual studio 2015\Projects\BugReporterSolution\BugReporter.Client\bin\Debug\BugReporter.Bll.pdb
+C:\Users\Alex\documents\visual studio 2015\Projects\BugReporterSolution\BugReporter.Client\bin\Debug\BugReporter.Models.pdb
+C:\Users\Alex\documents\visual studio 2015\Projects\BugReporterSolution\BugReporter.Client\obj\Debug\BugReporter.Client.exe
+C:\Users\Alex\documents\visual studio 2015\Projects\BugReporterSolution\BugReporter.Client\obj\Debug\BugReporter.Client.pdb
