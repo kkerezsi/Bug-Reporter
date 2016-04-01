@@ -27,7 +27,7 @@ namespace Server.Components
         private volatile bool _finished;
         private EventWaitHandle _waitHandle;
 
-        public BugReporterClientProxy(string host, int port) :base()
+        public BugReporterClientProxy(string host, int port) : base()
         {
             this._host = host;
             this._port = port;
@@ -133,6 +133,8 @@ namespace Server.Components
                 _waitHandle = new AutoResetEvent(false);
                 StartReader();
             }
+
+
             catch (Exception e)
             {
                 throw new ConnectionException(e.Message + " ------------------- " + e.StackTrace);
@@ -147,14 +149,20 @@ namespace Server.Components
 
         public virtual void Run()
         {
+            var i = 0;
             while (!_finished)
             {
                 try
                 {
                     object response = _formatter.Deserialize(_networkStream);
+                    i++;
                     if (response is SaveReportResponse)
                     {
-                         _client.UpdateReports(((SaveReportResponse)response).Reports);
+                        _client.UpdateReports(((SaveReportResponse)response).Reports);
+                    }
+                    else if (response is ReportsResponse && i > 2)
+                    {
+                        _client.UpdateReports(((ReportsResponse)response).ReportList);
                     }
                     else
                     {

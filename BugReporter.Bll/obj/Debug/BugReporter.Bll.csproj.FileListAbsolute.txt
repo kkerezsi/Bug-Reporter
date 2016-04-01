@@ -1,8 +1,8 @@
-C:\Users\Alex\documents\visual studio 2015\Projects\BugReporterSolution\BugReporter.Bll\bin\Debug\BugReporter.Bll.dll.config
-C:\Users\Alex\documents\visual studio 2015\Projects\BugReporterSolution\BugReporter.Bll\bin\Debug\BugReporter.Bll.dll
-C:\Users\Alex\documents\visual studio 2015\Projects\BugReporterSolution\BugReporter.Bll\bin\Debug\BugReporter.Bll.pdb
-C:\Users\Alex\documents\visual studio 2015\Projects\BugReporterSolution\BugReporter.Bll\bin\Debug\BugReporter.Models.dll
-C:\Users\Alex\documents\visual studio 2015\Projects\BugReporterSolution\BugReporter.Bll\bin\Debug\BugReporter.Models.pdb
-C:\Users\Alex\documents\visual studio 2015\Projects\BugReporterSolution\BugReporter.Bll\obj\Debug\BugReporter.Bll.csprojResolveAssemblyReference.cache
-C:\Users\Alex\documents\visual studio 2015\Projects\BugReporterSolution\BugReporter.Bll\obj\Debug\BugReporter.Bll.dll
-C:\Users\Alex\documents\visual studio 2015\Projects\BugReporterSolution\BugReporter.Bll\obj\Debug\BugReporter.Bll.pdb
+C:\Users\Alex\Documents\Visual Studio 2015\Projects\BugReporterSolution\BugReporter.Bll\bin\Debug\BugReporter.Bll.dll.config
+C:\Users\Alex\Documents\Visual Studio 2015\Projects\BugReporterSolution\BugReporter.Bll\bin\Debug\BugReporter.Bll.dll
+C:\Users\Alex\Documents\Visual Studio 2015\Projects\BugReporterSolution\BugReporter.Bll\bin\Debug\BugReporter.Bll.pdb
+C:\Users\Alex\Documents\Visual Studio 2015\Projects\BugReporterSolution\BugReporter.Bll\bin\Debug\BugReporter.Models.dll
+C:\Users\Alex\Documents\Visual Studio 2015\Projects\BugReporterSolution\BugReporter.Bll\bin\Debug\BugReporter.Models.pdb
+C:\Users\Alex\Documents\Visual Studio 2015\Projects\BugReporterSolution\BugReporter.Bll\obj\Debug\BugReporter.Bll.csprojResolveAssemblyReference.cache
+C:\Users\Alex\Documents\Visual Studio 2015\Projects\BugReporterSolution\BugReporter.Bll\obj\Debug\BugReporter.Bll.dll
+C:\Users\Alex\Documents\Visual Studio 2015\Projects\BugReporterSolution\BugReporter.Bll\obj\Debug\BugReporter.Bll.pdb

@@ -1,5 +1,5 @@
-C:\Users\Alex\documents\visual studio 2015\Projects\BugReporterSolution\BugReporter.Models\bin\Debug\BugReporter.Models.dll.config
-C:\Users\Alex\documents\visual studio 2015\Projects\BugReporterSolution\BugReporter.Models\bin\Debug\BugReporter.Models.dll
-C:\Users\Alex\documents\visual studio 2015\Projects\BugReporterSolution\BugReporter.Models\bin\Debug\BugReporter.Models.pdb
-C:\Users\Alex\documents\visual studio 2015\Projects\BugReporterSolution\BugReporter.Models\obj\Debug\BugReporter.Models.dll
-C:\Users\Alex\documents\visual studio 2015\Projects\BugReporterSolution\BugReporter.Models\obj\Debug\BugReporter.Models.pdb
+C:\Users\Alex\Documents\Visual Studio 2015\Projects\BugReporterSolution\BugReporter.Models\bin\Debug\BugReporter.Models.dll.config
+C:\Users\Alex\Documents\Visual Studio 2015\Projects\BugReporterSolution\BugReporter.Models\bin\Debug\BugReporter.Models.dll
+C:\Users\Alex\Documents\Visual Studio 2015\Projects\BugReporterSolution\BugReporter.Models\bin\Debug\BugReporter.Models.pdb
+C:\Users\Alex\Documents\Visual Studio 2015\Projects\BugReporterSolution\BugReporter.Models\obj\Debug\BugReporter.Models.dll
+C:\Users\Alex\Documents\Visual Studio 2015\Projects\BugReporterSolution\BugReporter.Models\obj\Debug\BugReporter.Models.pdb

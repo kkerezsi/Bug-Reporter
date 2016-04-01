@@ -40,6 +40,7 @@ namespace BugReporter.Client
 
             PopulateDropDownProjects(_reports);
             PopulateGridView(_reports);
+            _clientController.IsHandleCreated = this.IsHandleCreated;
         }
 
         private void PopulateDropDownProjects(ReportModel _reports)
@@ -126,7 +127,7 @@ namespace BugReporter.Client
         //1. define a method for updating the ReportList
         private void UpdateReportList(DataGridView reportList, ReportModel newData)
         {
-             BugReports.Rows.Clear();
+            BugReports.Rows.Clear();
 
             _reports = newData;
             var selected = ProjectList.SelectedItem;
@@ -145,12 +146,12 @@ namespace BugReporter.Client
 
         private void BugReports_RowValidating(object sender, DataGridViewCellCancelEventArgs e)
         {
-            
+
         }
 
         private void BugReports_RowLeave(object sender, DataGridViewCellEventArgs e)
         {
-            
+
         }
 
         private void SaveData_Click(object sender, EventArgs e)
