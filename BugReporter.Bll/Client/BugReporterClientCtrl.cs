@@ -12,13 +12,11 @@ namespace BugReporter.Bll.Client
         private readonly IBugReporterServer _server;
         private User _currentUser;
         public event EventHandler<BugReporterEventArgs> UpdateEvent;
-        public bool IsHandleCreated { get; set; }
 
         public BugReporterClientCtrl(IBugReporterServer server)
         {
             this._server = server;
             _currentUser = null;
-            IsHandleCreated = false;
         }
 
         public User Login(String username, String password)
@@ -41,9 +39,14 @@ namespace BugReporter.Bll.Client
             _currentUser = null;
         }
 
-        public ReportModel GetReports()
+        public void GetReports()
         {
-            return _server.GetReports(this);
+            _server.GetReports(this);
+        }
+
+        public UserList GetUserList()
+        {
+            return _server.GetUserList();
         }
 
         protected virtual void OnUserEvent(BugReporterEventArgs e)

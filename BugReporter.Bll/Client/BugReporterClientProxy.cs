@@ -48,12 +48,7 @@ namespace Server.Components
                 return ((OkLoginResponse)response).User;
             }
 
-            if (response is ErrorResponse)
-            {
-                ErrorResponse err = (ErrorResponse)response;
-                CloseConnection();
-                throw new ConnectionException(err.Message);
-            }
+            HandleErrorResponse(response);
 
             return user;
         }
@@ -64,11 +59,7 @@ namespace Server.Components
             SendRequest(new LogoutRequest(udto));
             Response response = ReadResponse();
             CloseConnection();
-            if (response is ErrorResponse)
-            {
-                ErrorResponse err = (ErrorResponse)response;
-                throw new ConnectionException(err.Message);
-            }
+            HandleErrorResponse(response);
         }
 
         private void CloseConnection()
@@ -108,6 +99,7 @@ namespace Server.Components
             try
             {
                 _waitHandle.WaitOne();
+
                 lock (_responses)
                 {
                     response = _responses.Dequeue();
@@ -149,18 +141,13 @@ namespace Server.Components
 
         public virtual void Run()
         {
-            var i = 0;
             while (!_finished)
             {
                 try
                 {
                     object response = _formatter.Deserialize(_networkStream);
-                    i++;
-                    if (response is SaveReportResponse)
-                    {
-                        _client.UpdateReports(((SaveReportResponse)response).Reports);
-                    }
-                    else if (response is ReportsResponse && i > 2)
+
+                    if (response is ReportsResponse)
                     {
                         _client.UpdateReports(((ReportsResponse)response).ReportList);
                     }
@@ -184,42 +171,40 @@ namespace Server.Components
         public ReportModel GetReports(IBugReporterObserver client)
         {
             SendRequest(new ReportsRequest());
-            Response response = ReadResponse();
 
-            if (response is ReportsResponse)
-            {
-                this._client = client;
-                return ((ReportsResponse)response).ReportList;
-            }
-
-            if (response is ErrorResponse)
-            {
-                ErrorResponse err = (ErrorResponse)response;
-                CloseConnection();
-                throw new ConnectionException(err.Message);
-            }
-
-            throw new ConnectionException("No reports response found");
+            return new ReportModel() { };
         }
 
-        public int SaveReports(ReportModel reportModel)
+        public void SaveReports(ReportModel reportModel)
         {
             SendRequest(new SaveReportRequest() { Reports = reportModel });
+        }
+
+        public UserList GetUserList(int? projectId = null)
+        {
+            SendRequest(new UserListRequest());
             Response response = ReadResponse();
 
-            if (response is SaveReportResponse)
+            if (response is UserListResponse)
             {
-                return ((SaveReportResponse)response).Status;
+                UserListResponse result = (UserListResponse)response;
+
+                return result.UserList;
             }
 
+            HandleErrorResponse(response);
+
+            return new UserList();
+        }
+
+        private void HandleErrorResponse(Response response)
+        {
             if (response is ErrorResponse)
             {
                 ErrorResponse err = (ErrorResponse)response;
                 CloseConnection();
                 throw new ConnectionException(err.Message);
             }
-
-            return 0;
         }
     }
 }

@@ -13,6 +13,7 @@ namespace BugReporter.Bll.Server.Components
         User Login(User user, IBugReporterObserver client);
         void Logout(User user, IBugReporterObserver client);
         ReportModel GetReports(IBugReporterObserver client);
-        int SaveReports(ReportModel reportModel);
+        UserList GetUserList(int? projectId = null);
+        void SaveReports(ReportModel reportModel);
     }
 }

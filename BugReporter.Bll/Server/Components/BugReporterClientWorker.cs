@@ -17,30 +17,15 @@ using System.Threading.Tasks;
 
 namespace BugReporter.Bll.Server.Components
 {
-    public class BugReporterClientWorker : IBugReporterObserver
+    public class BugReporterClientWorker :  RequestHandlers, IBugReporterObserver
     {
-        private TcpClient _connection { get; set; }
-        private IBugReporterServer _server { get; set; }
+        #region ctor
 
-        private NetworkStream _stream;
-        private IFormatter _formatter;
-        private volatile bool _connected;
-
-        public BugReporterClientWorker(IBugReporterServer server, TcpClient client)
+        public BugReporterClientWorker(IBugReporterServer server, TcpClient client) : base(server,client)
         {
-            _server = server;
-            _connection = client;
-            try
-            {
-                _stream = _connection.GetStream();
-                _formatter = new BinaryFormatter();
-                _connected = true;
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine(e.StackTrace);
-            }
         }
+
+        #endregion
 
         public void Run()
         {
@@ -61,7 +46,8 @@ namespace BugReporter.Bll.Server.Components
                 {
                     _connected = false;
 
-                    Console.WriteLine(e.StackTrace);
+                    _server.Logout(CurrentUser, this);
+                    Console.WriteLine(CurrentUser.Username + " User process failed.");
                 }
 
                 try
@@ -89,95 +75,30 @@ namespace BugReporter.Bll.Server.Components
             Response response = null;
             if (request is LoginRequest)
             {
-                Console.WriteLine("Login request ...");
-                LoginRequest loginRequest = (LoginRequest)request;
-                UserInfo uInfo = loginRequest.User;
-                User user = UserConverter.ConvertUserInfoToUser(uInfo);
-                try
-                {
-                    User userResponse;
-                    lock (_server)
-                    {
-                        userResponse = _server.Login(user, this);
-                    }
-
-                    return new OkLoginResponse() { User = userResponse };
-                }
-                catch (ConnectionException e)
-                {
-                    _connected = false;
-                    return new ErrorResponse() { Message = e.Message };
-                }
+                return HandleLoginRequest(request, this);
             }
 
             if (request is LogoutRequest)
             {
-                Console.WriteLine("Logout request");
-                LogoutRequest logoutRequest = (LogoutRequest)request;
-                UserInfo uInfo = logoutRequest.User;
-                User user = UserConverter.ConvertUserInfoToUser(uInfo);
-                try
-                {
-                    lock (_server)
-                    {
-                        _server.Logout(user, this);
-                    }
-
-                    _connected = false;
-                    return new OkLoginResponse();
-                }
-                catch (ConnectionException e)
-                {
-                    return new ErrorResponse() { Message = e.Message };
-                }
+                return HandleLogoutRequest(request, this);
             }
 
             if(request is ReportsRequest)
             {
-                try
-                {
-                    ReportModel reports = null;
-
-                    lock (_server)
-                    {
-                        reports = _server.GetReports(this);
-                    }
-
-                    return new ReportsResponse() { ReportList = reports } ;
-                }
-                catch (ConnectionException e)
-                {
-                    return new ErrorResponse() { Message = e.Message };
-                }
+                return HandleReportsRequest(request, this);
             }
 
             if (request is SaveReportRequest)
             {
-                try
-                {
-                    int statusCode = 0;
+                return HandleSaveReportRequest(request, this);
+            }
 
-                    lock (_server)
-                    {
-                        statusCode = _server.SaveReports(((SaveReportRequest)request).Reports);
-                    }
-
-                    return new SaveReportResponse() { Status = (int)StatusCodes.OK, Reports = ((SaveReportRequest)request).Reports };
-                }
-                catch (ConnectionException e)
-                {
-                    return new ErrorResponse() { Message = e.Message };
-                }
+            if (request is UserListRequest)
+            {
+                return HandleUserListRequest(request, this);
             }
 
             return response;
-        }
-
-        private void SendResponse(Response response)
-        {
-            Console.WriteLine("sending response " + response);
-            _formatter.Serialize(_stream, response);
-            _stream.Flush();
         }
 
         public void UpdateReports(ReportModel reportModel)

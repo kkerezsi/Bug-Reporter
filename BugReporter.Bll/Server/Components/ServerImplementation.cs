@@ -42,10 +42,13 @@ namespace BugReporter.Bll.Server.Components
 
         public void Logout(User user, IBugReporterObserver client)
         {
-            IBugReporterObserver localClient = _loggedClients[user.Username];
-            if (localClient == null)
-                throw new ConnectionException("User " + user.Username + " is not logged in.");
-            _loggedClients.Remove(user.Username);
+            if (_loggedClients.Keys.Contains(user.Username))
+            {
+                IBugReporterObserver localClient = _loggedClients[user.Username];
+                if (localClient == null)
+                    throw new ConnectionException("User " + user.Username + " is not logged in.");
+                _loggedClients.Remove(user.Username);
+            }
         }
 
         public ReportModel GetReports(IBugReporterObserver client)
@@ -59,7 +62,7 @@ namespace BugReporter.Bll.Server.Components
                 throw new ConnectionException("Null reports repository.");
         }
 
-        public int SaveReports(ReportModel reportModel)
+        public void SaveReports(ReportModel reportModel)
         {
             _reportsRepository.SaveReports(reportModel);
 
@@ -67,8 +70,18 @@ namespace BugReporter.Bll.Server.Components
             {
                 client.Value.UpdateReports(reportModel);
             }
+        }
 
-            return 0;
+        public UserList GetUserList(int? projectId = null)
+        {
+            if (!projectId.HasValue)
+            {
+                var usersFromRepo = _userRepository.GetAllUsers();
+
+                return usersFromRepo;
+            }
+
+            return _userRepository.GetUsersByProject(projectId.Value);
         }
     }
 }

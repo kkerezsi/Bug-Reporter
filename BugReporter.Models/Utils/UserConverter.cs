@@ -27,5 +27,10 @@ namespace BugReporter.Models.Networking.Utils
                 Password = user.Password
             };
         }
+
+        public static KeyValuePair<string,string> ConvertUserToKeyValuePair(User user)
+        {
+            return new KeyValuePair<string, string>(user.Username, user.Username);
+        }
     }
 }

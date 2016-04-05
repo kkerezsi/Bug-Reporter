@@ -35,13 +35,13 @@
             this.refreshToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.BugReports = new System.Windows.Forms.DataGridView();
+            this.ProjectList = new System.Windows.Forms.ComboBox();
+            this.Username = new System.Windows.Forms.Label();
+            this.SaveData = new System.Windows.Forms.Button();
             this.Bugs = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.AssignedTo = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.Description = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Status = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.ProjectList = new System.Windows.Forms.ComboBox();
-            this.Username = new System.Windows.Forms.Label();
-            this.SaveData = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.BugReports)).BeginInit();
@@ -123,40 +123,6 @@
             this.BugReports.RowsAdded += new System.Windows.Forms.DataGridViewRowsAddedEventHandler(this.BugReports_RowsAdded);
             this.BugReports.RowValidating += new System.Windows.Forms.DataGridViewCellCancelEventHandler(this.BugReports_RowValidating);
             // 
-            // Bugs
-            // 
-            this.Bugs.FillWeight = 200F;
-            this.Bugs.HeaderText = "Bug Name";
-            this.Bugs.MinimumWidth = 20;
-            this.Bugs.Name = "Bugs";
-            this.Bugs.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.Bugs.Width = 200;
-            // 
-            // AssignedTo
-            // 
-            this.AssignedTo.FillWeight = 200F;
-            this.AssignedTo.HeaderText = "Assigned To";
-            this.AssignedTo.Name = "AssignedTo";
-            this.AssignedTo.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.AssignedTo.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.AssignedTo.Width = 200;
-            // 
-            // Description
-            // 
-            this.Description.FillWeight = 200F;
-            this.Description.HeaderText = "Description";
-            this.Description.Name = "Description";
-            this.Description.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.Description.Width = 200;
-            // 
-            // Status
-            // 
-            this.Status.FillWeight = 200F;
-            this.Status.HeaderText = "Status";
-            this.Status.Name = "Status";
-            this.Status.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.Status.Width = 200;
-            // 
             // ProjectList
             // 
             this.ProjectList.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
@@ -187,6 +153,41 @@
             this.SaveData.Text = "Save";
             this.SaveData.UseVisualStyleBackColor = true;
             this.SaveData.Click += new System.EventHandler(this.SaveData_Click);
+            // 
+            // Bugs
+            // 
+            this.Bugs.FillWeight = 200F;
+            this.Bugs.HeaderText = "Bug Name";
+            this.Bugs.MinimumWidth = 20;
+            this.Bugs.Name = "Bugs";
+            this.Bugs.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.Bugs.Width = 200;
+            // 
+            // AssignedTo
+            // 
+            this.AssignedTo.AutoComplete = false;
+            this.AssignedTo.FillWeight = 200F;
+            this.AssignedTo.HeaderText = "Assigned To";
+            this.AssignedTo.Name = "AssignedTo";
+            this.AssignedTo.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.AssignedTo.Width = 200;
+            // 
+            // Description
+            // 
+            this.Description.FillWeight = 200F;
+            this.Description.HeaderText = "Description";
+            this.Description.Name = "Description";
+            this.Description.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.Description.Width = 200;
+            // 
+            // Status
+            // 
+            this.Status.AutoComplete = false;
+            this.Status.FillWeight = 200F;
+            this.Status.HeaderText = "Status";
+            this.Status.Name = "Status";
+            this.Status.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.Status.Width = 200;
             // 
             // TesterScreen
             // 
@@ -224,10 +225,10 @@
         private System.Windows.Forms.ComboBox ProjectList;
         private System.Windows.Forms.DataGridView BugReports;
         private System.Windows.Forms.Label Username;
+        private System.Windows.Forms.Button SaveData;
         private System.Windows.Forms.DataGridViewTextBoxColumn Bugs;
         private System.Windows.Forms.DataGridViewComboBoxColumn AssignedTo;
         private System.Windows.Forms.DataGridViewTextBoxColumn Description;
         private System.Windows.Forms.DataGridViewComboBoxColumn Status;
-        private System.Windows.Forms.Button SaveData;
     }
 }

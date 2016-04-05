@@ -10,10 +10,10 @@ namespace BugReporter.Models.Models
     [Serializable]
     public class Bug
     {
-        public User Reporter { get; set; }
-        public User AssignedTo { get; set; }
+        public string Reporter { get; set; }
+        public string AssignedTo { get; set; }
         public string Description { get; set; }
         public string Name { get; set; }
-        public BugStatus Status { get; set; }
+        public string Status { get; set; }
     }
 }

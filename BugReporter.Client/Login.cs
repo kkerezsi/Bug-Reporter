@@ -39,8 +39,8 @@ namespace BugReporter.Client
                 {
                     case (UserType.Developer): 
                         { 
-                            DeveloperScreen developerScreen = new DeveloperScreen(this, _clientController, loginResult);
-                            developerScreen.Show();
+                            DevScreen DevScreen = new DevScreen(this, _clientController, loginResult);
+                            DevScreen.Show();
                             break;
                         }
                     case (UserType.Tester):

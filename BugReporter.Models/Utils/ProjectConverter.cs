@@ -21,13 +21,13 @@ namespace BugReporter.Models.Utils
             return new List<List<string>>();
         }
 
-        public static ReportModel ConvertStringListToProject(string projectName, DataGridView bugReports, ReportModel currentReports)
+        public static ReportModel ConvertStringListToProject(string projectName, DataGridView bugReports, ReportModel currentReports, bool isDeveloper = false)
         {
             var currentProject = currentReports.Projects.Where(x => x.Name.Equals(projectName)).FirstOrDefault();
 
             var rows = new List<Bug>();
 
-            for (int i = 0; i < bugReports.RowCount - 1; i++)
+            for (int i = 0; i < bugReports.RowCount - 1 + (isDeveloper ? 1 : 0); i++)
             {
                 Bug model = new Bug();
 
@@ -39,13 +39,13 @@ namespace BugReporter.Models.Utils
                             model.Name = item.Value.ToString();
                             break;
                         case 1:
-                            model.AssignedTo = new User() { Username = item.Value.ToString() };
+                            model.AssignedTo = item.Value.ToString();
                             break;
                         case 2:
                             model.Description = item.Value.ToString();
                             break;
                         case 3:
-                            model.Reporter = new User() { Username = item.Value.ToString() };
+                            model.Status = item.Value.ToString();
                             break;
                         default:
                             break;

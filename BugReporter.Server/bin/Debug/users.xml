@@ -1,0 +1,5 @@
+<UserList>
+	<User username="Tester" password="Tester" type="Tester" />
+	<User username="Tester2" password="Tester2" type="Tester" />
+	<User username="Developer" password="Developer" type="Developer" />
+</UserList>

@@ -11,5 +11,7 @@ namespace BugReporter.Bll.Server.Components
     {
         bool VerifyUser(User user);
         User GetUser(User user);
+        UserList GetAllUsers();
+        UserList GetUsersByProject(int projectId);
     }
 }

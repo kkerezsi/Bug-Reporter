@@ -49,17 +49,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DevScreen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DevScreen.Designer.cs">
+      <DependentUpon>DevScreen.cs</DependentUpon>
+    </Compile>
     <Compile Include="TesterScreen.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="TesterScreen.Designer.cs">
       <DependentUpon>TesterScreen.cs</DependentUpon>
-    </Compile>
-    <Compile Include="DeveloperScreen.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="DeveloperScreen.Designer.cs">
-      <DependentUpon>DeveloperScreen.cs</DependentUpon>
     </Compile>
     <Compile Include="Login.cs">
       <SubType>Form</SubType>
@@ -69,11 +69,11 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="DevScreen.resx">
+      <DependentUpon>DevScreen.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="TesterScreen.resx">
       <DependentUpon>TesterScreen.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="DeveloperScreen.resx">
-      <DependentUpon>DeveloperScreen.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Login.resx">
       <DependentUpon>Login.cs</DependentUpon>

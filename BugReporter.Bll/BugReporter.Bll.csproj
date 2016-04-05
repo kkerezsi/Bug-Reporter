@@ -52,6 +52,7 @@
     <Compile Include="Repositories\TextReportsRepository.cs" />
     <Compile Include="Server\Components\Contracts\IBugReporterObserver.cs" />
     <Compile Include="Server\Components\Contracts\IBugReporterServer.cs" />
+    <Compile Include="Server\Components\RequestHandlers.cs" />
     <Compile Include="Server\Components\ServerImplementation.cs" />
     <Compile Include="Repositories\Contracts\IUserRepository.cs" />
     <Compile Include="Repositories\TextUserRepository.cs" />
@@ -64,7 +65,9 @@
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Windows.Forms.DataVisualization" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Server\Utils\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

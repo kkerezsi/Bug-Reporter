@@ -1,5 +1,6 @@
 ﻿using BugReporter.Bll.Client;
 using BugReporter.Bll.Server.Components;
+using BugReporter.Models.Utils;
 using Server.Components;
 using System;
 using System.Collections.Generic;

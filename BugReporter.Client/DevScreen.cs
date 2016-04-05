@@ -16,23 +16,24 @@ using System.Windows.Forms;
 
 namespace BugReporter.Client
 {
-    public partial class TesterScreen : Form
+    public partial class DevScreen : Form
     {
         private Form _login { get; set; }
         private BugReporterClientCtrl _clientController;
         private User _user;
         private ReportModel _reports;
         private UserList _userList;
-        private KeyValuePair<string,string>[] _listOfStringUsers;
+        private KeyValuePair<string, string>[] _listOfStringUsers;
         private KeyValuePair<string, string>[] _listOfStatus;
 
-        public TesterScreen(Form login, BugReporterClientCtrl clientController, User user)
+        public DevScreen(Form login, BugReporterClientCtrl clientController, User user)
         {
             InitializeComponent();
 
             _clientController = clientController;
             _login = login;
             _user = user;
+            _userList = new UserList();
         }
 
         private void InitLogin()
@@ -42,7 +43,7 @@ namespace BugReporter.Client
             _userList = _clientController.GetUserList();
 
             _listOfStringUsers = _userList.Users.Select(x => UserConverter.ConvertUserToKeyValuePair(x)).ToArray();
-            _listOfStatus = Enum.GetNames(typeof(BugStatus)).ToList().Select(x => new KeyValuePair<string,string>(x,x)).ToArray();
+            _listOfStatus = Enum.GetNames(typeof(BugStatus)).ToList().Select(x => new KeyValuePair<string, string>(x, x)).ToArray();
 
             BugReports.AutoGenerateColumns = false;
 
@@ -53,6 +54,21 @@ namespace BugReporter.Client
             ((DataGridViewComboBoxColumn)BugReports.Columns[3]).DataSource = _listOfStatus;
             ((DataGridViewComboBoxColumn)BugReports.Columns[3]).DisplayMember = "Key";
             ((DataGridViewComboBoxColumn)BugReports.Columns[3]).ValueMember = "Value";
+        }
+
+        private void DevScreen_Load(object sender, EventArgs e)
+        {
+            _clientController.UpdateEvent += UserUpdate;
+            BugReports.AllowUserToAddRows = false;
+
+            for (int i = 0; i < BugReports.Columns.Count - 1; i++)
+            {
+                DataGridViewColumn col = BugReports.Columns[i];
+
+                col.ReadOnly = true;
+            }
+
+            InitLogin();
         }
 
         private void PopulateDropDownProjects(ReportModel _reports, bool changeSelection = false)
@@ -94,12 +110,6 @@ namespace BugReporter.Client
             }
         }
 
-        private void TesterScreen_Load(object sender, EventArgs e)
-        {
-            _clientController.UpdateEvent += UserUpdate;
-            InitLogin();
-        }
-
         private void logoutToolStripMenuItem_Click(object sender, EventArgs e)
         {
             _clientController.Logout();
@@ -107,7 +117,7 @@ namespace BugReporter.Client
             this.Close();
         }
 
-        private void TesterScreen_FormClosed(object sender, FormClosedEventArgs e)
+        private void DevScreen_FormClosed(object sender, FormClosedEventArgs e)
         {
             _clientController.Logout();
             _clientController.UpdateEvent -= UserUpdate;
@@ -157,7 +167,7 @@ namespace BugReporter.Client
             _reports = newData;
             var selected = ProjectList.SelectedItem;
 
-            PopulateDropDownProjects(_reports,true);
+            PopulateDropDownProjects(_reports, true);
             PopulateGridView(_reports, selected != null ? selected.ToString() : string.Empty);
         }
 
@@ -181,7 +191,7 @@ namespace BugReporter.Client
 
         private void SaveData_Click(object sender, EventArgs e)
         {
-            ReportModel report = ProjectConverter.ConvertStringListToProject(ProjectList.SelectedItem.ToString(), BugReports, _reports);
+            ReportModel report = ProjectConverter.ConvertStringListToProject(ProjectList.SelectedItem.ToString(), BugReports, _reports, true);
             _clientController.SaveChanges(report);
         }
     }
