@@ -51,7 +51,7 @@ namespace BugReporter.Bll.Server.Components
                 }
 
                 try
-                {
+                {   
                     Thread.Sleep(1000);
                 }
                 catch (Exception e)
